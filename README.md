@@ -33,9 +33,9 @@ The system uses a **two-step machine learning approach**:
 
 <img width="1443" height="676" alt="image" src="https://github.com/user-attachments/assets/d8a4d7f0-5276-4fcb-8a5a-a9e3fd2b8912" />
 
-<img width="405" height="363" alt="image" src="https://github.com/user-attachments/assets/a5f96ef6-6b81-4802-a1b7-5c824235673c" />
+<img width="250" height="250" alt="image" src="https://github.com/user-attachments/assets/a5f96ef6-6b81-4802-a1b7-5c824235673c" />
 
-<img width="762" height="391" alt="image" src="https://github.com/user-attachments/assets/fa47e4db-7e20-4eb5-a1ea-fa06eea31a87" />
+<img width="762" height="250" alt="image" src="https://github.com/user-attachments/assets/fa47e4db-7e20-4eb5-a1ea-fa06eea31a87" />
 
 <img width="507" height="432" alt="image" src="https://github.com/user-attachments/assets/d31434ff-45e6-4cda-a9bc-4eeba4d3fc02" />
 
