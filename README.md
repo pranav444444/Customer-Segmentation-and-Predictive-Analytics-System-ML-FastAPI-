@@ -103,6 +103,13 @@ Open in browser:
 ```
 http://localhost:5000/train
 ```
+Or
+
+Open swagger by visiting the below link and click on **train** api to train the model
+
+'''
+http://localhost:5000/docs
+'''
 
 ### 🔹 Step 7: Predict Customer Segment
 
