@@ -58,6 +58,7 @@ The system uses a **two-step machine learning approach**:
 
 - **Marketing Campaign Dataset** (Customer Personality Analysis)
 - Contains customer demographics, spending behavior, and campaign responses
+- https://drive.google.com/file/d/1zZgfcdlOpmqQHwaJHfs4V_sZq2-rvafT/view?usp=sharing
 
 ---
 
