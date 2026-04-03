@@ -13,7 +13,7 @@ This project analyzes customer data and segments customers into different groups
 The system uses a **two-step machine learning approach**:
 
 1. **Unsupervised Learning (Clustering)**
-   Customers are grouped into clusters using K-Means clustering based on their behavior and spending patterns.
+   Customers are grouped into clusters using **K-Means clustering** based on their behavior and spending patterns.
 
 2. **Supervised Learning (Classification)**
    A trained **XGBoost Classifier** predicts the cluster of new customers based on input features.
