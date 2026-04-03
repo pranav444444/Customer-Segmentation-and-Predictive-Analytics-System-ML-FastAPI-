@@ -2,9 +2,9 @@
 
 ---
 
-# Customer Segmentation and Predictive Analytics System
+ **Customer Segmentation and Predictive Analytics System**
 
-## 📌 Problem Statement
+📌 **Problem Statement**
 
 This project focuses on analyzing customer data and segmenting customers into different groups based on their demographics and purchasing behavior. Businesses such as retail stores and e-commerce platforms can use this segmentation to better understand customer patterns and improve marketing strategies.
 
@@ -63,16 +63,16 @@ The system uses a **two-step machine learning approach**:
 git clone <your-repo-link>
 cd <project-folder>
 
-###🔹Step 2: Create Virtual Environment
+**###🔹Step 2: Create Virtual Environment**
 
 python -m venv venv
 venv\Scripts\activate   # Windows
 
-🔹 Step 3: Install Dependencies
+###🔹 Step 3: Install Dependencies
 
 pip install -r requirements.txt
 
-🔹 Step 4: Set Environment Variables
+###🔹 Step 4: Set Environment Variables
 
 Create a .env file and add:
 
