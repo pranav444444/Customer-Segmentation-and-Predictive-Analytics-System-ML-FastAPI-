@@ -41,14 +41,7 @@ The system uses a **two-step machine learning approach**:
 
 <img width="1274" height="447" alt="image" src="https://github.com/user-attachments/assets/8a3c99fe-6527-4725-899e-8840ea48b910" />
 
-<img width="1274" height="593" alt="image" src="https://github.com/user-attachments/assets/d2781dfe-2e45-4dae-8bb2-578cdad99a16" />
 
-<img width="1274" height="593" alt="image" src="https://github.com/user-attachments/assets/bb69dd87-daab-4248-8f37-336e162d09f3" />
-
-
-<img width="1274" height="447" alt="image" src="https://github.com/user-attachments/assets/948f8755-6c2c-46ba-997e-4621f5ec4a19" />
-
-<img width="1274" height="593" alt="image" src="https://github.com/user-attachments/assets/d0045ebe-88ab-4955-b7a9-31c073291ff1" />
 
 
 
