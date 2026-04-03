@@ -1,4 +1,4 @@
-
+<img width="1274" height="593" alt="image" src="https://github.com/user-attachments/assets/d5b1e84e-06d2-4942-9bac-85925142c6e7" />
 
 # 🧠 Customer Segmentation and Predictive Analytics System
 
@@ -110,6 +110,12 @@ Open swagger by visiting the below link and click on **train** api to train the 
 ```
 http://localhost:5000/docs
 ```
+<img width="1274" height="459" alt="image" src="https://github.com/user-attachments/assets/fb3aca12-2919-4721-968b-3eb22111328f" />
+
+You must see **Training Successful !!** message displayed in output:
+<img width="1274" height="593" alt="image" src="https://github.com/user-attachments/assets/781fe15c-c96e-40e5-92fe-e5facc3d0444" />
+
+
 
 ### 🔹 Step 7: Predict Customer Segment
 
