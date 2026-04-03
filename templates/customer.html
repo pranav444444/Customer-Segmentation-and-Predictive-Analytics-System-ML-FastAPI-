@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Customer Segmentation</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-white shadow-sm">
+    <div class="container justify-content-center">
+        <a class="navbar-brand" href="#">
+            <img src="{{ url_for('static', path='images/varidx_logo.jpg') }}" height="100">
+        </a>
+    </div>
+</nav>
+    <section>
+        <div class="container mt-5">
+            <div class="card shadow-lg p-4">
+                <form action="/" method="post">
+                    <h2 class="text-center mb-4 fw-bold">
+                Customer Segmentation Prediction
+                    </h2>
+                    <legend>Please provide the details given below:</legend>
+                    <div class="mb-3">
+                        <label for="Age">🎂 Age</label>
+                        <input type="number" class="form-control" id="Age" name="Age"  placeholder="Customer Age" required="required">
+                      </div>
+        
+                      <div class="mb-3">
+                        <label for="Education">🎓 Education of customer</label>
+                        <select class="form-control" id="Education" name="Education" placeholder="Education of Customer" required="required">
+                            <option value="" disabled selected>Select Education</option>
+                            <option value="0">Basic</option>
+                            <option value="1">2n Cycle</option>
+                            <option value = "2">Graduation</option>
+                            <option value = "3">Master</option>
+                            <option value = "4">PhD</option>
+                        </select>
+                      </div>
+        
+                      <div class="mb-3">
+                        <label for="Marital_Status">💍 Married</label>
+                        <select class="form-control" id="Marital_Status" name="Marital_Status" placeholder="Is married" required="required">
+                            <option value="" disabled selected>Is married</option>
+                            <option value="0">N</option>
+                            <option value = "1">Y</option>
+                        </select>
+                      </div>
+        
+                      <div class="mb-3">
+                        <label for="Parental_Status">👶 Has Kids</label>
+                        <select class="form-control" id="Parental_Status" name="Parental_Status" required onchange="handleKids()">
+                            <option value="" disabled selected>Has kids</option>
+                            <option value = "0">N</option>
+                            <option value = "1">Y</option>
+                        </select>
+                      </div>
+        
+                      <div class="mb-3">
+                        <label for="Children">👨‍👩‍👧 Number of Children</label>
+                        <input type="number" class="form-control" id="Children" name="Children"  placeholder="No of Children" min="0" required
+                        oninput="validateChildren()"
+                        >
+                      </div>
+                      
+                      <div class="mb-3">
+                        <label for="Income">💰 Monthly Income of customer</label>
+                            <input type="number" class="form-control" id="Income" name="Income"  placeholder="Customer income" required="required">
+                          </div>
+                          
+
+                          <div class="mb-3">
+                        <label for="Total_Spending">🧾 Total Money Spending</label>
+                        <input type="number" class="form-control" id="Total_Spending" name="Total_Spending" placeholder="Auto-calculated" readonly>
+                      </div>
+                      
+
+                      <div class="mb-3">
+                        <label for="Days_as_Customer">⏳ Days of being customer</label>
+                        <input type="number" class="form-control" id="Days_as_Customer" name="Days_as_Customer"  placeholder="Days of being customer" required="required">
+                      </div>
+                      
+                      <div class="mb-3">
+                        <label for="Recency">⏳ Number of days since customer's last purchase</label>
+                        <input type="number" class="form-control" id="Recency" name="Recency"  placeholder="Number of days since customer's last purchase" required="required">
+                      </div>
+
+                      
+
+                      <div class="mb-3">
+                        <label for="Wines">🍷 Amount spent on wine in last 2 years</label>
+                        <input type="number" class="form-control" id="Wines" name="Wines"  placeholder="Amount spent on wine in last 2 years" required="required"
+                        oninput="calculateTotal()"
+                        >
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="Fruits">🍎 Amount spent on Fruits in last 2 years</label>
+                        <input type="number" class="form-control" id="Fruits" name="Fruits"  placeholder="Amount spent on Fruits in last 2 years" required="required" 
+                        oninput="calculateTotal()"
+                        >
+                      </div>
+                      <div class="mb-3">
+                        <label for="Meat">🍖 Amount spent on Meat in last 2 years</label>
+                        <input type="number" class="form-control" id="Meat" name="Meat"  placeholder="Amount spent on Meat in last 2 years" required="required"
+                        oninput="calculateTotal()"
+                        >
+                      </div>
+                      <div class="mb-3">
+                        <label for="Fish">🐟 Amount spent on Fish in last 2 years</label>
+                        <input type="number" step="0.01" class="form-control" id="Fish" name="Fish"  placeholder="Amount spent on Fish in last 2 years" required="required"
+                        oninput="calculateTotal()"
+                        >
+                      </div>
+                      <div class="mb-3">
+                        <label for="Sweets">🍬 Amount spent on Sweets in last 2 years</label>
+                        <input type="number" class="form-control" id="Sweets" name="Sweets"  placeholder="Amount spent on Sweets in last 2 years" required="required"
+                        oninput="calculateTotal()"
+                        >
+                      </div>
+                      <div class="mb-3">
+                        <label for="Gold">🪙 Amount spent on Gold in last 2 years</label>
+                        <input type="number" class="form-control" id="Gold" name="Gold"  placeholder="Amount spent on Gold in last 2 years" required="required"
+                        oninput="calculateTotal()"
+                        >
+                      </div>
+                      <div class="mb-3">
+                        <label for="Web">🌐 Number of purchases made through the company’s website </label>
+                        <input type="number" class="form-control" id="Web" name="Web"  placeholder="Number of purchases made through the company’s website " required="required">
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="Catalog">📰 Number of purchases made using a catalogue
+                        </label>
+                        <input type="number" class="form-control" id="Catalog" name="Catalog"  placeholder="Number of purchases made using a catalogue " required="required">
+                      </div>
+                      <div class="mb-3">
+                        <label for="Store">🏪 Number of purchases made directly in stores </label>
+                        <input type="number" class="form-control" id="Store" name="Store"  placeholder="Number of purchases made directly in stores " required="required">
+                      </div>
+                      <div class="mb-3">
+                        <label for="Discount_Purchases">💰 Number of purchases made with a discount</label>
+                        <input type="number" class="form-control" id="Discount_Purchases" name="Discount_Purchases"  placeholder="Number of purchases made with a discount" required="required">
+                      </div>
+                      <div class="mb-3">
+                        <label for="Total_Promo">✅ Number of promotion offers customer has accepted</label>
+                        <input type="number" class="form-control" id="Total_Promo" name="Total_Promo"  placeholder="Number of promotion offers customer has accepted" required="required">
+                      </div>
+                      
+
+                      <div class="mb-3">
+                        <label for="NumWebVisitsMonth">🌐 Number of visits to company’s website in the last month</label>
+                        <input type="number" class="form-control" id="NumWebVisitsMonth" name="NumWebVisitsMonth"  placeholder="Number of visits to company’s website in the last month" required="required">
+                      </div>
+                      
+        
+                        <input class="btn btn-warning btn-lg px-2 shadow-sm" type="submit" value="Predict Customer Cluster" required />
+                    </div>
+                    
+                </form>
+            </div>
+            <div class="alert alert-success text-center mt-4">
+              <h3>Customer Category: <strong>{{context}}</strong></h3>
+              <p><strong>Cluster ID:</strong> {{cluster_id}}</p>
+              <p><strong>Recommendation:</strong> {{recommendation}}</p>
+            </div>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+    <script type="text/javascript">
+        $(".input").focus(function(){
+            $(this).parent().addClass("focus");
+        }).blur(function(){
+            if($(this).val() === ''){
+                $(this).parent().removeClass("focus");
+            }
+        });
+
+        // AUTO TOTAL CALCULATION FUNCTION
+        function calculateTotal() {
+            let wines = parseFloat(document.getElementById("Wines").value) || 0;
+            let fruits = parseFloat(document.getElementById("Fruits").value) || 0;
+            let meat = parseFloat(document.getElementById("Meat").value) || 0;
+            let fish = parseFloat(document.getElementById("Fish").value) || 0;
+            let sweets = parseFloat(document.getElementById("Sweets").value) || 0;
+            let gold = parseFloat(document.getElementById("Gold").value) || 0;
+
+            let total = wines + fruits + meat + fish + sweets + gold;
+
+            document.getElementById("Total_Spending").value = total;
+        }
+
+
+        // KIDS VALIDATION LOGIC
+      function handleKids() {
+          let status = document.getElementById("Parental_Status").value;
+          let children = document.getElementById("Children");
+
+          if (status == "0") {
+              // No kids → force 0
+              children.value = 0;
+              children.readOnly = true;
+              children.min = 0;
+          } 
+          else if (status == "1") {
+              // Has kids → must be >=1
+              children.readOnly = false;
+              children.min = 1;
+
+              if (children.value == 0) {
+                  children.value = "";
+              }
+          }
+      }
+
+
+      function validateChildren() {
+          let status = document.getElementById("Parental_Status").value;
+          let children = document.getElementById("Children");
+
+          if (status == "1" && children.value == "0") {
+              alert("If customer has kids, number must be at least 1");
+              children.value = "";
+          }
+      }
+    </script>
+  </body>
+</html>
