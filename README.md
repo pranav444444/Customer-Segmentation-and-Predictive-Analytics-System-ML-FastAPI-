@@ -1,4 +1,4 @@
-<img width="1274" height="593" alt="image" src="https://github.com/user-attachments/assets/d5b1e84e-06d2-4942-9bac-85925142c6e7" />
+
 
 # 🧠 Customer Segmentation and Predictive Analytics System
 
@@ -23,6 +23,35 @@ The system uses a **two-step machine learning approach**:
 - Cluster ID
 - Business Recommendation (e.g., Discounts, Engagement Strategies)
 
+--- 
+
+### 🎯 Output Screenshots:
+
+<img width="1005" height="799" alt="image" src="https://github.com/user-attachments/assets/6e262c35-46d3-4036-bb0c-59f5ecf2477d" />
+
+<img width="1016" height="139" alt="image" src="https://github.com/user-attachments/assets/b7b44a84-09ab-401e-a060-a8e160567702" />
+
+<img width="1443" height="676" alt="image" src="https://github.com/user-attachments/assets/d8a4d7f0-5276-4fcb-8a5a-a9e3fd2b8912" />
+
+<img width="405" height="363" alt="image" src="https://github.com/user-attachments/assets/a5f96ef6-6b81-4802-a1b7-5c824235673c" />
+
+<img width="762" height="391" alt="image" src="https://github.com/user-attachments/assets/fa47e4db-7e20-4eb5-a1ea-fa06eea31a87" />
+
+<img width="507" height="432" alt="image" src="https://github.com/user-attachments/assets/d31434ff-45e6-4cda-a9bc-4eeba4d3fc02" />
+
+<img width="1274" height="447" alt="image" src="https://github.com/user-attachments/assets/8a3c99fe-6527-4725-899e-8840ea48b910" />
+
+<img width="1274" height="593" alt="image" src="https://github.com/user-attachments/assets/d2781dfe-2e45-4dae-8bb2-578cdad99a16" />
+
+<img width="1274" height="593" alt="image" src="https://github.com/user-attachments/assets/bb69dd87-daab-4248-8f37-336e162d09f3" />
+
+
+<img width="1274" height="447" alt="image" src="https://github.com/user-attachments/assets/948f8755-6c2c-46ba-997e-4621f5ec4a19" />
+
+<img width="1274" height="593" alt="image" src="https://github.com/user-attachments/assets/d0045ebe-88ab-4955-b7a9-31c073291ff1" />
+
+
+
 ---
 
 ## 📊 Dataset
@@ -37,7 +66,7 @@ The system uses a **two-step machine learning approach**:
 | Layer | Technologies |
 |-------|-------------|
 | Backend | Python, Flask |
-| Machine Learning | Scikit-learn, XGBoost |
+| Machine Learning | Scikit-learn, Pandas, Matplotlib, Seaborn |
 | Database | MongoDB Atlas |
 | Frontend | HTML, CSS, Bootstrap |
 
