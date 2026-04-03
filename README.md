@@ -1,167 +1,198 @@
 
-# Customer Personality Segmentation
 
-## Problem statement
+---
 
-This data science project,predicts the personality of the customer using machine learning algorithms. This project can be very usefull for malls, various stores and companies which are product based. Based on customer's personal details and purchase details, we can cluster them and we can predict the customer's cluster number using classification techniques.
+# Customer Segmentation and Predictive Analytics System
 
-## Solution Proposed
+## 📌 Problem Statement
 
-Now the question is how to dynamically predict the cluster of the customer ?. One of the approaches which we can use of machine learning approach, where we can cluster the customer based on the details we have and predict the cluster type based on the domain knowledge and leverage previous customer data to predict the cluster.
+This project focuses on analyzing customer data and segmenting customers into different groups based on their demographics and purchasing behavior. Businesses such as retail stores and e-commerce platforms can use this segmentation to better understand customer patterns and improve marketing strategies.
 
-Dataset used
- <html>
-<a href="https://github.com/entbappy/Branching-tutorial/blob/master/marketing_campaign.zip"> Dataset Link</a>
-</html>
+---
 
+## 💡 Solution Overview
 
+The system uses a **two-step machine learning approach**:
 
-## Tech Stack Used
+1. **Unsupervised Learning (Clustering)**  
+   Customers are grouped into clusters using K-Means clustering based on their behavior and spending patterns.
 
-1. Python
-2. FastAPI
-3. Machine learning algorithms
-4. Docker
-5. MongoDB
+2. **Supervised Learning (Classification)**  
+   A trained **XGBoost Classifier** is used to predict the cluster of new customers based on input features.
 
-## Infrastructure required
+### 🎯 Output Includes:
+- Customer Category (e.g., Low Value, High Value)
+- Cluster ID
+- Business Recommendation (e.g., Discounts, Engagement Strategies)
 
-1. AWS S3
-2. Azure
-3. Github Actions
+---
 
-## How to run
+## 📊 Dataset
 
-Before you run this project make sure you have MongoDB Atlas account and you have the shipping dataset into it.
+- Marketing Campaign Dataset (Customer Personality Analysis)  
+- Contains customer demographics, spending behavior, and campaign responses  
 
-Step 1. Cloning the repository.
+---
 
-```
+## 🛠️ Tech Stack Used
 
-git clone https://github.com/Machine-Learning-01/Customer_segmentation.git
+- Python  
+- Flask (Web Application)  
+- Machine Learning (Scikit-learn, XGBoost)  
+- MongoDB Atlas (Database)  
+- HTML, CSS, Bootstrap (Frontend)  
 
-```
+---
 
-Step 2. Create a conda environment.
+## ⚙️ Machine Learning Workflow
 
-```
+1. Data Ingestion from MongoDB  
+2. Data Validation and Cleaning  
+3. Feature Engineering & Transformation  
+4. PCA for dimensionality reduction  
+5. K-Means Clustering (for creating labels)  
+6. XGBoost Classifier (for prediction)  
+7. Model Deployment using Flask  
 
-conda create --prefix venv python=3.7 -y
+---
 
-```
+## 🚀 How to Run the Project
 
-```
+### 🔹 Step 1: Clone Repository
+```bash
+git clone <your-repo-link>
+cd <project-folder>
 
-conda activate venv/
+###🔹Step 2: Create Virtual Environment
 
-```
+python -m venv venv
+venv\Scripts\activate   # Windows
 
-Step 3. Install the requirements
-
-```
+🔹 Step 3: Install Dependencies
 
 pip install -r requirements.txt
 
-```
+🔹 Step 4: Set Environment Variables
 
-Step 4. Export the environment variable
+Create a .env file and add:
 
-```bash
-
-export AWS_ACCESS_KEY_ID=<AWS_ACCESS_KEY_ID>
+MONGO_DB_URL=your_mongodb_connection_string
 
 
-export AWS_SECRET_ACCESS_KEY=<AWS_SECRET_ACCESS_KEY>
+---
 
-
-export AWS_DEFAULT_REGION=<AWS_DEFAULT_REGION>
-
-
-export MONGODB_URL= <MONGODB_URL>
-
-
-```
-
-Step 5. Run the application server
-
-```
+🔹 Step 5: Run Application
 
 python app.py
 
-```
 
-Step 6. Train application
+---
 
-```bash
+🔹 Step 6: Train Model
+
+Open in browser:
 
 http://localhost:5000/train
 
-```
 
-Step 7. Prediction application
+---
 
-```bash
+🔹 Step 7: Predict Customer Segment
 
-http://localhost:5000/predict
+Open:
 
-```
+http://localhost:5000/
 
-## Run locally
+Fill the form → Get:
 
-1. Check if the Dockerfile is available in the project directory
-2. Build the Docker image
+Cluster ID
 
-```
+Customer Category
 
-docker build --build-arg AWS_ACCESS_KEY_ID=<AWS_ACCESS_KEY_ID> --build-arg AWS_SECRET_ACCESS_KEY=<AWS_SECRET_ACCESS_KEY> --build-arg AWS_DEFAULT_REGION=<AWS_DEFAULT_REGION> --build-arg MONGODB_URL=<MONGODB_URL> . 
+Recommendation
 
-```
 
-3. Run the Docker image
 
-```
+---
 
-docker run -d -p 5000:5000 <IMAGE_NAME>
+📌 Key Features
 
-```
+Automatic Total Spending Calculation in UI
 
-## Project Architecture -
+Input Validation (Children logic handling)
 
-![WhatsApp Image 2022-09-22 at 15 29 19](https://user-images.githubusercontent.com/71321529/192722336-54016f79-89ef-4c8c-9d71-a6e91ebab03f.jpeg)
+Real-time Prediction via Web Interface
 
-## Data Collection Architecture -
+End-to-End ML Pipeline (Training + Prediction)
 
-![WhatsApp Image 2022-09-22 at 15 29 10](https://user-images.githubusercontent.com/71321529/192721926-de265f9b-f301-4943-ac7d-948bff7be9a0.jpeg)
 
-## Deployment Architecture -
 
-![deployment](https://user-images.githubusercontent.com/104005791/199660875-c8e63457-432a-44cb-8a95-800870f3da15.png)
+---
 
-## Models Used
+🤖 Models Used
 
-* [K-Means](https://www.javatpoint.com/k-means-clustering-algorithm-in-machine-learning)
-* [LogisticRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)
+K-Means Clustering (for segmentation)
 
-From these above models after hyperparameter optimization we selected these two models which were K-Means for clustering and Logistic Regression for classification and used the following in Pipeline.
+XGBoost Classifier (for prediction)
 
-* GridSearchCV is used for Hyperparameter Optimization in the pipeline.
+GridSearchCV (for hyperparameter tuning)
 
-## `src` is the main package folder which contains
 
-**Components** : Contains all components of Machine Learning Project
 
-- Data Ingestion
-- Data Validation
-- Data Transformation
-- Data Clustering
-- Model Trainer
-- Model Evaluation
-- Model Pusher
+---
 
-**Custom Logger and Exceptions** are used in the Project for better debugging purposes.
+📂 Project Structure
 
-## Conclusion
+src/
+│
+├── components/
+│   ├── data_ingestion.py
+│   ├── data_validation.py
+│   ├── data_transformation.py
+│   ├── data_clustering.py
+│   ├── model_trainer.py
+│
+├── configuration/
+├── entity/
+├── utils/
 
-- This Project can be used in real-life by Users.
+
+---
+
+📈 Results
+
+Achieved ~96% accuracy using XGBoost Classifier
+
+Effective clustering of customers into meaningful segments
+
+Improved interpretability using category labels
+
+
+
+---
+
+📌 Conclusion
+
+This system helps businesses:
+
+Identify customer segments
+
+Target customers effectively
+
+Improve marketing strategies
+
+
+
+---
+
+🔮 Future Improvements
+
+Docker Deployment
+
+AWS Deployment (S3 + EC2)
+
+Real-time data pipeline
+
+Model monitoring
 
 
