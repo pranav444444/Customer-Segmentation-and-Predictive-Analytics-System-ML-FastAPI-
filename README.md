@@ -39,17 +39,13 @@ The system uses a **two-step machine learning approach**:
 
 <img width="507" height="432" alt="image" src="https://github.com/user-attachments/assets/d31434ff-45e6-4cda-a9bc-4eeba4d3fc02" />
 
-<img width="1274" height="447" alt="image" src="https://github.com/user-attachments/assets/8a3c99fe-6527-4725-899e-8840ea48b910" />
+<img width="1893" height="872" alt="image" src="https://github.com/user-attachments/assets/39ef18fa-7b70-4fae-9534-92ef533a738a" />
 
-<img width="1623" height="669" alt="image" src="https://github.com/user-attachments/assets/7d156df7-ae98-43b7-aed9-c3f671ce61e6" />
+<img width="1919" height="865" alt="image" src="https://github.com/user-attachments/assets/c1c3b961-523b-4bbd-afc3-bd1a00d0883e" />
 
-<img width="1274" height="411" alt="image" src="https://github.com/user-attachments/assets/84c6eaf9-e3fb-43f8-ac1b-6f68c55149ef" />
+<img width="1895" height="721" alt="image" src="https://github.com/user-attachments/assets/7c501cad-70e0-4a4d-af5b-6bb2609d7dd4" />
 
-<img width="1600" height="195" alt="image" src="https://github.com/user-attachments/assets/476f7345-718b-4862-a447-0244a837d662" />
-
-
-
-
+<img width="1888" height="858" alt="image" src="https://github.com/user-attachments/assets/b6d6e607-233e-49d9-9d46-0b5dd6566802" />
 
 
 ---
