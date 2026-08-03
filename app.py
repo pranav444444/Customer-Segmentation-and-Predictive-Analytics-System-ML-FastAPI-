@@ -50,7 +50,12 @@ async def predictGetRouteClient(request: Request):
     try:
         return templates.TemplateResponse(
             "customer.html",
-            {"request": request, "context": "Rendering", "recommendation": ""}
+            {
+                "request": request,
+                "context": "Rendering",
+                "recommendation": "",
+                "form_data": {}
+            }
         )
     except Exception as e:
         return Response(f"Error Occurred! {e}")
@@ -119,7 +124,30 @@ async def predictRouteClient(
                 "request": request,
                 "context": label,
                 "recommendation": recommendation,
-                "cluster_id":cluster
+                "cluster_id":cluster,
+                "form_data": {
+                    "Age": Age,
+                    "Education": Education,
+                    "Marital_Status": Marital_Status,
+                    "Parental_Status": Parental_Status,
+                    "Children": Children,
+                    "Income": Income,
+                    "Total_Spending": Total_Spending,
+                    "Days_as_Customer": Days_as_Customer,
+                    "Recency": Recency,
+                    "Wines": Wines,
+                    "Fruits": Fruits,
+                    "Meat": Meat,
+                    "Fish": Fish,
+                    "Sweets": Sweets,
+                    "Gold": Gold,
+                    "Web": Web,
+                    "Catalog": Catalog,
+                    "Store": Store,
+                    "Discount_Purchases": Discount_Purchases,
+                    "Total_Promo": Total_Promo,
+                    "NumWebVisitsMonth": NumWebVisitsMonth
+                }
             }
         )
 
