@@ -1,9 +1,13 @@
 from src.configuration.aws_connection import S3Client
 from io import StringIO
-from typing import Union,List
+from typing import Union, List, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from mypy_boto3_s3.service_resource import Bucket
+    
 import os,sys
 from src.logger import logging
-from mypy_boto3_s3.service_resource import Bucket
+
 from src.exception import CustomerException
 from botocore.exceptions import ClientError
 from pandas import DataFrame,read_csv
@@ -60,7 +64,7 @@ class SimpleStorageService:
         except Exception as e:
             raise CustomerException(e, sys) from e
 
-    def get_bucket(self, bucket_name: str) -> Bucket:
+    def get_bucket(self, bucket_name: str) -> "Bucket":
         """
         Method Name :   get_bucket
         Description :   This method gets the bucket object based on the bucket_name
