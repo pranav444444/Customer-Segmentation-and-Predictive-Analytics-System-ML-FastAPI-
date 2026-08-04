@@ -7,6 +7,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
+
 from src.pipeline.prediction_pipeline import PredictionPipeline
 from src.pipeline.train_pipeline import TrainPipeline
 from src.constant.application import *

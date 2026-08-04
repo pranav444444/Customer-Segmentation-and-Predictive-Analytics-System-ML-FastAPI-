@@ -20,7 +20,7 @@ from pandas import DataFrame
 import pandas as pd
 
 
-
+from pathlib import Path
 
 
 class CustomerData:
@@ -106,7 +106,10 @@ class PredictionPipeline:
             import pickle
 
             # Update the model path to the correct location of your model file
-            model_path = r"D:\Customer_Segmentation_ML_project\Customer-Categorizer-main\notebooks\model.pkl"  # Provide the correct path to your model file
+            # model_path = r"D:\Customer_Segmentation_ML_project\Customer-Categorizer-main\notebooks\model.pkl"  # Provide the correct path to your model file
+            BASE_DIR = Path(__file__).resolve().parents[2]
+            model_path = BASE_DIR / "notebooks" / "model.pkl"
+            
 
             with open(model_path, "rb") as f:
                 model = pickle.load(f)
