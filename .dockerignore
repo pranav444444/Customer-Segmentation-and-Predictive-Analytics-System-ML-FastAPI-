@@ -3,7 +3,9 @@ assignment/
 docs/
 flowchart/
 infrastructure/
-notebooks/
+# Ignore notebooks except trained model
+notebooks/*
+!notebooks/model.pkl  
 scripts/
 venv/
 README.md
