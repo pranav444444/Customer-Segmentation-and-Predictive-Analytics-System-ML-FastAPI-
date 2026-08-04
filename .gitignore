@@ -140,4 +140,9 @@ artifact
 test.ipynb
 
 artifacts/
+
+# Ignore all pickle files
 *.pkl
+
+# Except the deployed model
+!notebooks/model.pkl
