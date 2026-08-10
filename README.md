@@ -161,7 +161,13 @@ Final model selected after hyperparameter tuning using GridSearchCV
 
 ### SegmentIQ Web Application
 
-![SegmentIQ Application](YOUR_EXISTING_APPLICATION_IMAGE_LINK)
+<img width="1895" height="871" alt="image" src="https://github.com/user-attachments/assets/1e43b2c3-9d3f-4c15-b6b8-2b766f64bc3b" />
+
+<img width="1889" height="877" alt="image" src="https://github.com/user-attachments/assets/360fa5db-a569-49ba-9a45-db2e2939b6f1" />
+
+<img width="1894" height="880" alt="image" src="https://github.com/user-attachments/assets/c92e3244-ac3b-4b20-b99b-98c6258a8b34" />
+
+<img width="1886" height="411" alt="image" src="https://github.com/user-attachments/assets/b4e36ee4-330e-4ee1-99e9-d36f1a13e940" />
 
 ---
 
