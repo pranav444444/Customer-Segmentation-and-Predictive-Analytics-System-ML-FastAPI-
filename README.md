@@ -137,15 +137,27 @@ For a new customer profile, the application provides:
 
 ### Customer Segmentation Visualization
 
-![K-Means Clustering](YOUR_EXISTING_KMEANS_IMAGE_LINK)
+<img width="1005" height="799" alt="image" src="https://github.com/user-attachments/assets/b70f745b-5bea-42c2-8cc5-2a3e88ed205b" />
+
+<img width="1026" height="558" alt="image" src="https://github.com/user-attachments/assets/362fab4f-d2ff-4fb8-b09c-cc4ddcda2871" />
+
+<img width="1033" height="164" alt="image" src="https://github.com/user-attachments/assets/48f842c9-99ed-4882-9282-669b3de56e24" />
+
+<img width="1443" height="676" alt="image" src="https://github.com/user-attachments/assets/2c942075-66be-4342-9ff0-8bff42b5cfed" />
 
 ### Model Comparison
 
-![Classification Model Comparison](YOUR_EXISTING_MODEL_COMPARISON_IMAGE_LINK)
+<img width="462" height="392" alt="image" src="https://github.com/user-attachments/assets/6601e8a6-d3e0-4e5a-a3d9-4ee22096726b" />
+
+Final model selected after hyperparameter tuning using GridSearchCV
+
+<img width="849" height="415" alt="image" src="https://github.com/user-attachments/assets/be173202-cfcc-48ba-b747-3209ee2c809c" />
+
 
 ### Confusion Matrix
 
-![Confusion Matrix](YOUR_EXISTING_CONFUSION_MATRIX_IMAGE_LINK)
+<img width="507" height="432" alt="image" src="https://github.com/user-attachments/assets/2be7e7ae-37ef-4c1a-9821-cf58c4b6df2c" />
+
 
 ### SegmentIQ Web Application
 
