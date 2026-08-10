@@ -1,185 +1,278 @@
+# 🧠 SegmentIQ — Customer Segmentation & Predictive Analytics System
 
+An end-to-end Machine Learning application for **customer segmentation and customer segment prediction**, built using clustering and classification techniques and deployed as a containerized web application.
 
-# 🧠 Customer Segmentation and Predictive Analytics System
+The system analyzes customer demographics and purchasing behavior, discovers meaningful customer groups using unsupervised learning, and predicts the segment of new customers using a trained classification model.
+
+---
+
+## 🌐 Live Application
+
+🚀 **SegmentIQ is deployed and publicly accessible on Render:**
+
+👉 https://segmentiq-qyte.onrender.com
+
+> **Note:** The application is hosted on a Render free instance. If the service has been inactive, the first request may take some time while the instance starts.
+
+---
 
 ## 📌 Problem Statement
 
-This project analyzes customer data and segments customers into different groups based on their demographics and purchasing behavior. Businesses such as retail stores and e-commerce platforms can use this segmentation to better understand customer patterns and improve marketing strategies.
+Businesses such as retail stores and e-commerce platforms interact with customers having different purchasing behaviors, spending capacities, demographics, and engagement patterns.
+
+Treating every customer in the same way can lead to ineffective marketing strategies.
+
+**SegmentIQ** addresses this problem by:
+
+1. Discovering meaningful customer groups using **unsupervised machine learning**.
+2. Training a **supervised classification model** to predict the segment of new customers.
+3. Providing predictions through an interactive web interface.
+
+This can help businesses better understand their customers and design more targeted marketing and engagement strategies.
 
 ---
 
 ## 💡 Solution Overview
 
-The system uses a **two-step machine learning approach**:
+The project follows a two-stage Machine Learning approach:
 
-1. **Unsupervised Learning (Clustering)**
-   Customers are grouped into clusters using **K-Means clustering** based on their behavior and spending patterns.
+### 1️⃣ Customer Segmentation — Unsupervised Learning
 
-2. **Supervised Learning (Classification)**
-   A trained **XGBoost Classifier** predicts the cluster of new customers based on input features.
+Multiple clustering algorithms were explored and evaluated:
 
-### 🎯 Output Includes
-- Customer Category (e.g., Low Value, High Value)
+- K-Means Clustering
+- Agglomerative Clustering
+- Gaussian Mixture Model (GMM)
+- DBSCAN
+
+The clustering performance was analyzed using techniques such as the **Elbow Method** and **Silhouette Score**.
+
+For K-Means, the following silhouette scores were obtained:
+
+| Number of Clusters | Silhouette Score |
+| ------------------ | ---------------- |
+| 3 | **0.5105** |
+| 4 | 0.4575 |
+| 5 | 0.4336 |
+| 6 | 0.3910 |
+
+Based on the clustering experiments and evaluation, **K-Means with 3 clusters** was selected for the final segmentation pipeline.
+
+PCA was also used to reduce dimensionality for visualization of the customer clusters.
+
+---
+
+### 2️⃣ Customer Segment Prediction — Supervised Learning
+
+After generating customer cluster labels, multiple classification algorithms were trained and compared to predict the segment of new customers.
+
+### Classification Model Comparison — Before Hyperparameter Tuning
+
+| Model | Accuracy |
+| ----- | -------: |
+| K-Nearest Neighbors | 81.25% |
+| Logistic Regression | 87.72% |
+| AdaBoost Classifier | 90.18% |
+| Decision Tree | 94.42% |
+| Random Forest | 95.98% |
+| Gradient Boosting | 96.21% |
+| **XGBoost Classifier** | **96.43%** |
+
+**XGBoost achieved the highest accuracy (~96.43%)** among the evaluated classification models and was selected for further optimization.
+
+---
+
+## ⚙️ XGBoost Hyperparameter Tuning
+
+After selecting XGBoost, **GridSearchCV with 5-fold cross-validation** was used to search for the best combination of hyperparameters.
+
+The following parameter grid was evaluated:
+
+```python
+params = {
+    "n_estimators": [100, 200, 300],
+    "max_depth": [3, 5, 7],
+    "learning_rate": [0.01, 0.05, 0.1],
+    "subsample": [0.8, 1],
+    "colsample_bytree": [0.8, 1]
+}
+```
+
+The best parameters identified by GridSearchCV were then used to train the final XGBoost model.
+
+---
+
+## 📊 Model Evaluation
+
+Before hyperparameter tuning, the selected XGBoost classifier achieved approximately:
+
+- **Accuracy:** 96.43%
+- **Macro Precision:** 0.96
+- **Macro Recall:** 0.96
+- **Macro F1-Score:** 0.96
+- **Weighted Precision:** 0.96
+- **Weighted Recall:** 0.96
+- **Weighted F1-Score:** 0.96
+
+The model was also evaluated using a **classification report and confusion matrix** to analyze prediction performance across all three customer segments.
+
+> **Note:** The 96.43% model comparison result corresponds to the XGBoost model evaluated before GridSearchCV hyperparameter tuning.
+
+---
+
+## 🎯 Output Includes
+
+For a new customer profile, the application provides:
+
+- Customer Segment / Category
 - Cluster ID
-- Business Recommendation (e.g., Discounts, Engagement Strategies)
+- Business Recommendation
+- Real-time prediction through the web interface
 
---- 
+---
 
-### 🎯 Output Screenshots:
+## 📸 Output Screenshots
 
-<img width="1005" height="799" alt="image" src="https://github.com/user-attachments/assets/6e262c35-46d3-4036-bb0c-59f5ecf2477d" />
+<!-- Keep your existing screenshot/image links below this section -->
 
-<img width="1016" height="139" alt="image" src="https://github.com/user-attachments/assets/b7b44a84-09ab-401e-a060-a8e160567702" />
+### Customer Segmentation Visualization
 
-<img width="1443" height="676" alt="image" src="https://github.com/user-attachments/assets/d8a4d7f0-5276-4fcb-8a5a-a9e3fd2b8912" />
+![K-Means Clustering](YOUR_EXISTING_KMEANS_IMAGE_LINK)
 
-<img width="250" height="250" alt="image" src="https://github.com/user-attachments/assets/a5f96ef6-6b81-4802-a1b7-5c824235673c" />
+### Model Comparison
 
-<img width="762" height="250" alt="image" src="https://github.com/user-attachments/assets/fa47e4db-7e20-4eb5-a1ea-fa06eea31a87" />
+![Classification Model Comparison](YOUR_EXISTING_MODEL_COMPARISON_IMAGE_LINK)
 
-<img width="507" height="432" alt="image" src="https://github.com/user-attachments/assets/d31434ff-45e6-4cda-a9bc-4eeba4d3fc02" />
+### Confusion Matrix
 
-<img width="1893" height="872" alt="image" src="https://github.com/user-attachments/assets/39ef18fa-7b70-4fae-9534-92ef533a738a" />
+![Confusion Matrix](YOUR_EXISTING_CONFUSION_MATRIX_IMAGE_LINK)
 
-<img width="1919" height="865" alt="image" src="https://github.com/user-attachments/assets/c1c3b961-523b-4bbd-afc3-bd1a00d0883e" />
+### SegmentIQ Web Application
 
-<img width="1895" height="721" alt="image" src="https://github.com/user-attachments/assets/7c501cad-70e0-4a4d-af5b-6bb2609d7dd4" />
-
-<img width="1888" height="858" alt="image" src="https://github.com/user-attachments/assets/b6d6e607-233e-49d9-9d46-0b5dd6566802" />
-
+![SegmentIQ Application](YOUR_EXISTING_APPLICATION_IMAGE_LINK)
 
 ---
 
 ## 📊 Dataset
 
-- **Marketing Campaign Dataset** (Customer Personality Analysis)
-- Contains customer demographics, spending behavior, and campaign responses
-- https://drive.google.com/file/d/1zZgfcdlOpmqQHwaJHfs4V_sZq2-rvafT/view?usp=sharing
+- **Marketing Campaign Dataset — Customer Personality Analysis**
+- Contains customer demographics, spending behavior, purchasing patterns, household information, campaign responses, and customer engagement information.
+
+### Dataset Link
+
+https://drive.google.com/file/d/1zZgfcdlOpmqQHwaJHfs4V_sZq2-rvafT/view?usp=sharing
+
+---
+
+## 🔄 End-to-End Machine Learning Workflow
+
+```text
+Customer Dataset
+       │
+       ▼
+Data Ingestion
+       │
+       ▼
+Data Validation & Cleaning
+       │
+       ▼
+Exploratory Data Analysis
+       │
+       ▼
+Feature Engineering
+       │
+       ▼
+Data Transformation
+       │
+       ▼
+Clustering Experiments
+(K-Means / Agglomerative / GMM / DBSCAN)
+       │
+       ▼
+Clustering Evaluation
+(Elbow Method + Silhouette Score)
+       │
+       ▼
+K-Means — 3 Customer Segments
+       │
+       ▼
+Classification Model Comparison
+       │
+       ▼
+XGBoost Classifier
+       │
+       ▼
+GridSearchCV Hyperparameter Tuning
+       │
+       ▼
+Prediction Pipeline
+       │
+       ▼
+FastAPI Web Application
+       │
+       ▼
+Docker Containerization
+       │
+       ▼
+Render Deployment
+```
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer | Technologies |
-|-------|-------------|
-| Backend | Python, Flask |
-| Machine Learning | Scikit-learn, Pandas, Matplotlib, Seaborn |
+| Category | Technologies |
+| -------- | ------------ |
+| Programming | Python |
+| Data Processing | Pandas, NumPy |
+| Machine Learning | Scikit-learn, XGBoost |
+| Clustering | K-Means, Agglomerative Clustering, GMM, DBSCAN |
+| Hyperparameter Tuning | GridSearchCV |
+| Dimensionality Reduction | PCA |
+| Visualization | Matplotlib, Seaborn |
+| Backend / API | FastAPI, Uvicorn |
 | Database | MongoDB Atlas |
-| Frontend | HTML, CSS, Bootstrap |
+| Frontend | HTML, CSS |
+| Containerization | Docker |
+| Deployment | Render |
+| Version Control | Git, GitHub |
 
 ---
 
-## ⚙️ Machine Learning Workflow
+## ⚙️ Machine Learning Pipeline
 
-1. Data Ingestion from MongoDB
-2. Data Validation and Cleaning
-3. Feature Engineering & Transformation
-4. PCA for Dimensionality Reduction
-5. K-Means Clustering (for creating labels)
-6. XGBoost Classifier (for prediction)
-7. Model Deployment using Flask
+The production-level Machine Learning workflow consists of:
 
----
+1. **Data Ingestion**
+   - Retrieves and prepares customer data for the pipeline.
 
-## 🚀 How to Run the Project
+2. **Data Validation**
+   - Validates incoming data and checks data quality.
 
-### 🔹 Step 1: Clone Repository
+3. **Data Transformation**
+   - Performs preprocessing and feature transformation.
 
-```bash
-git clone <your-repo-link>
-cd <project-folder>
-```
+4. **Data Clustering**
+   - Creates customer segments using the selected clustering approach.
 
-### 🔹 Step 2: Create Virtual Environment
+5. **Model Training**
+   - Trains the classification model for customer segment prediction.
 
-```bash
-python -m venv venv
+6. **Model Evaluation**
+   - Evaluates the trained model using classification metrics.
 
-# Windows
-venv\Scripts\activate
-
-# macOS/Linux
-source venv/bin/activate
-```
-
-### 🔹 Step 3: Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 🔹 Step 4: Set Environment Variables
-
-Create a `.env` file in the root directory and add:
-
-```env
-MONGO_DB_URL=your_mongodb_connection_string
-```
-
-### 🔹 Step 5: Run Application
-
-```bash
-python app.py
-```
-
-### 🔹 Step 6: Train the Model
-
-Open in browser:
-
-```
-http://localhost:5000/train
-```
-Or
-
-Open swagger by visiting the below link and click on **train** api to train the model
-
-```
-http://localhost:5000/docs
-```
-<img width="1274" height="459" alt="image" src="https://github.com/user-attachments/assets/fb3aca12-2919-4721-968b-3eb22111328f" />
-
-You must see **Training Successful !!** message displayed in output:
-<img width="1274" height="593" alt="image" src="https://github.com/user-attachments/assets/781fe15c-c96e-40e5-92fe-e5facc3d0444" />
-
-
-
-### 🔹 Step 7: Predict Customer Segment
-
-Open:
-
-```
-http://localhost:5000/
-```
-
-Fill in the form to get:
-- ✅ Cluster ID
-- ✅ Customer Category
-- ✅ Business Recommendation
+7. **Prediction Pipeline**
+   - Uses the trained model to predict the segment of new customers.
 
 ---
 
-## 📌 Key Features
+## 🏗️ Production-Level Implementation
 
-- 🔢 Automatic Total Spending Calculation in UI
-- ✅ Input Validation (Children logic handling)
-- ⚡ Real-time Prediction via Web Interface
-- 🔄 End-to-End ML Pipeline (Training + Prediction)
+After completing experimentation in Jupyter Notebooks, the project was converted into a modular Python application.
 
----
+The production pipeline separates the major Machine Learning responsibilities into reusable components.
 
-## 🤖 Models Used
-
-| Model | Purpose |
-|-------|---------|
-| K-Means Clustering | Customer segmentation |
-| XGBoost Classifier | Cluster prediction |
-| GridSearchCV | Hyperparameter tuning |
-
----
-
-## 📂 Project Structure
-
-```
+```text
 src/
 │
 ├── components/
@@ -189,38 +282,245 @@ src/
 │   ├── data_clustering.py
 │   └── model_trainer.py
 │
+├── pipeline/
+│   └── prediction_pipeline.py
+│
 ├── configuration/
+├── cloud_storage/
 ├── entity/
+├── exception/
+├── logger/
+├── ml/
 └── utils/
+```
+
+This modular architecture separates data processing, model training, prediction, configuration, logging, and other application responsibilities instead of keeping the complete workflow inside Jupyter Notebooks.
+
+---
+
+# 🚀 How to Run the Project
+
+The application can be run either:
+
+1. **Locally using Python**
+2. **Inside a Docker container**
+
+---
+
+## 🔹 Option 1 — Run Locally
+
+### Step 1: Clone Repository
+
+```bash
+git clone <your-repository-url>
+cd <project-folder>
+```
+
+### Step 2: Create Virtual Environment
+
+```bash
+python -m venv venv
+```
+
+#### Windows
+
+```bash
+venv\Scripts\activate
+```
+
+#### macOS/Linux
+
+```bash
+source venv/bin/activate
+```
+
+### Step 3: Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Step 4: Set Environment Variables
+
+Create a `.env` file in the root directory and add:
+
+```env
+MONGO_DB_URL=your_mongodb_connection_string
+```
+
+> ⚠️ Never commit database credentials or your `.env` file to GitHub.
+
+### Step 5: Run Application
+
+```bash
+python app.py
+```
+
+Open the application:
+
+```text
+http://localhost:5000
 ```
 
 ---
 
-## 📈 Results
+## 🔹 Train the Model
 
-- ✅ Achieved **~96% accuracy** using XGBoost Classifier
-- ✅ Effective clustering of customers into meaningful segments
-- ✅ Improved interpretability using category labels
+Open:
+
+```text
+http://localhost:5000/train
+```
+
+Or use the FastAPI Swagger documentation:
+
+```text
+http://localhost:5000/docs
+```
+
+Use the **train API endpoint** to start the training pipeline.
+
+A successful execution should return a training success response.
 
 ---
 
-## 📌 Conclusion
+## 🔹 Predict Customer Segment
 
-This system helps businesses:
-- 🎯 Identify customer segments
-- 📣 Target customers effectively
-- 📈 Improve marketing strategies
+Open:
+
+```text
+http://localhost:5000/
+```
+
+Enter the required customer information in the web interface to generate the predicted customer segment.
+
+---
+
+# 🐳 Run Using Docker
+
+The application has been containerized using **Docker** so that the code and its dependencies can run consistently across different environments.
+
+## Step 1: Build Docker Image
+
+```bash
+docker build -t customer_categorizer .
+```
+
+## Step 2: Run Docker Container
+
+```bash
+docker run -d --name segmentiq-container -p 5000:5000 customer_categorizer
+```
+
+## Step 3: Open Application
+
+```text
+http://localhost:5000
+```
+
+To verify that the container is running:
+
+```bash
+docker ps
+```
+
+---
+
+## ☁️ Deployment
+
+The application has successfully progressed through the following stages:
+
+```text
+Jupyter Notebook Experimentation
+          ↓
+Modular Python ML Pipeline
+          ↓
+FastAPI Application
+          ↓
+Docker Image
+          ↓
+Docker Container
+          ↓
+Render Cloud Deployment
+          ↓
+Public SegmentIQ Web Application
+```
+
+### 🌐 Live Deployment
+
+👉 https://segmentiq-qyte.onrender.com
+
+The deployed application can be accessed from any device with an internet connection.
+
+---
+
+## 📌 Key Features
+
+- 🔍 Exploratory analysis of customer behavior
+- 👥 Customer segmentation using unsupervised learning
+- 🧪 Comparison of multiple clustering algorithms
+- 📊 Cluster evaluation using Silhouette Score
+- 📉 PCA-based cluster visualization
+- 🤖 Comparison of multiple classification algorithms
+- ⚡ XGBoost-based customer segment prediction
+- 🔧 Hyperparameter tuning using GridSearchCV
+- 📋 Classification report and confusion matrix evaluation
+- 🔢 Automatic spending-related calculations in the UI
+- ✅ Input validation
+- ⚡ Real-time prediction through the web interface
+- 🔄 End-to-End Machine Learning pipeline
+- 🧩 Modular production-level Python architecture
+- 🌐 FastAPI-based application
+- 🐳 Docker containerization
+- ☁️ Public deployment using Render
+
+---
+
+## 📈 Key Results
+
+- ✅ Experimented with **K-Means, Agglomerative Clustering, GMM, and DBSCAN**
+- ✅ Selected **3 customer segments** for the final K-Means solution
+- ✅ Achieved a **0.5105 Silhouette Score** with K-Means at `k = 3`
+- ✅ Evaluated **7 classification algorithms**
+- ✅ XGBoost achieved approximately **96.43% accuracy before hyperparameter tuning**
+- ✅ Achieved approximately **0.96 macro and weighted F1-score**
+- ✅ Performed **5-fold GridSearchCV** hyperparameter tuning on XGBoost
+- ✅ Converted notebook experimentation into a modular ML application
+- ✅ Containerized the complete application using **Docker**
+- ✅ Successfully deployed the application publicly using **Render**
+
+---
+
+## 💼 Business Value
+
+SegmentIQ can help businesses:
+
+- 🎯 Identify distinct customer groups
+- 🧠 Understand differences in customer purchasing behavior
+- 📣 Design segment-specific marketing strategies
+- 🎁 Provide targeted offers and promotions
+- 🤝 Improve customer engagement
+- 📈 Support data-driven customer relationship decisions
 
 ---
 
 ## 🔮 Future Improvements
 
-- [ ] Docker Deployment
-- [ ] AWS Deployment (S3 + EC2)
-- [ ] Real-time data pipeline
-- [ ] Model monitoring
-```
+- [ ] CI/CD pipeline using GitHub Actions
+- [ ] AWS deployment
+- [ ] Cloud-based model storage using Amazon S3
+- [ ] Model monitoring and data drift detection
+- [ ] Automated model retraining
+- [ ] Real-time customer data pipeline
 
 ---
 
+## 📌 Conclusion
 
+**SegmentIQ** demonstrates an end-to-end Machine Learning workflow that goes beyond model experimentation.
+
+The project covers **data preprocessing, exploratory analysis, clustering experimentation, cluster evaluation, supervised model comparison, hyperparameter tuning, production-level code organization, API development, Docker containerization, and cloud deployment**.
+
+The final system uses **K-Means clustering with three customer segments** and an **XGBoost-based classification pipeline** to predict the segment of new customers through an interactive web application.
+
+The application has been successfully containerized using **Docker** and deployed publicly on **Render**, demonstrating the complete transition from Machine Learning experimentation to a deployable application.
