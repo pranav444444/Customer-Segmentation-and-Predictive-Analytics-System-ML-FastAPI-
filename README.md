@@ -68,14 +68,14 @@ After generating customer cluster labels, multiple classification algorithms wer
 
 ### Classification Model Comparison — Before Hyperparameter Tuning
 
-| Model | Accuracy |
-| ----- | -------: |
-| K-Nearest Neighbors | 81.25% |
-| Logistic Regression | 87.72% |
-| AdaBoost Classifier | 90.18% |
-| Decision Tree | 94.42% |
-| Random Forest | 95.98% |
-| Gradient Boosting | 96.21% |
+| Model                  | Accuracy   |
+| ---------------------- | ---------: |
+| K-Nearest Neighbors    |     81.25% |
+| Logistic Regression    |     87.72% |
+| AdaBoost Classifier    |     90.18% |
+| Decision Tree          |     94.42% |
+| Random Forest          |     95.98% |
+| Gradient Boosting      |     96.21% |
 | **XGBoost Classifier** | **96.43%** |
 
 **XGBoost achieved the highest accuracy (~96.43%)** among the evaluated classification models and was selected for further optimization.
@@ -98,15 +98,15 @@ params = {
 }
 ```
 
-The best parameters identified by GridSearchCV were then used to train the final XGBoost model.
+The best parameters identified by GridSearchCV were used to train the **final XGBoost classifier**, which was then exported for use in the production prediction pipeline.
 
 ---
 
-## 📊 Model Evaluation
+## 📊 Final Model Evaluation
 
-Before hyperparameter tuning, the selected XGBoost classifier achieved approximately:
+After GridSearchCV hyperparameter tuning, the final XGBoost classifier achieved:
 
-- **Accuracy:** 96.43%
+- **Accuracy:** 96.28%
 - **Macro Precision:** 0.96
 - **Macro Recall:** 0.96
 - **Macro F1-Score:** 0.96
@@ -114,10 +114,17 @@ Before hyperparameter tuning, the selected XGBoost classifier achieved approxima
 - **Weighted Recall:** 0.96
 - **Weighted F1-Score:** 0.96
 
-The model was also evaluated using a **classification report and confusion matrix** to analyze prediction performance across all three customer segments.
+### Class-wise Performance
 
-> **Note:** The 96.43% model comparison result corresponds to the XGBoost model evaluated before GridSearchCV hyperparameter tuning.
+| Customer Segment | Precision | Recall | F1-Score | Support |
+| ---------------- | --------: | -----: | -------: | ------: |
+| 0                | 0.96      | 0.96   | 0.96     | 179     |
+| 1                | 1.00      | 0.96   | 0.98     | 258     |
+| 2                | 0.93      | 0.97   | 0.95     | 235     |
 
+The final tuned model maintained strong and balanced predictive performance across all three customer segments, achieving an overall **96.28% accuracy on 672 test samples**.
+
+> **Note:** XGBoost achieved **96.43% accuracy before hyperparameter tuning** during the initial model comparison. After GridSearchCV, the final tuned model achieved **96.28% accuracy** and was exported for use in the production prediction pipeline.
 ---
 
 ## 🎯 Output Includes
