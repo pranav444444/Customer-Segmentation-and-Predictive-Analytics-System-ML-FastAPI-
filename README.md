@@ -549,3 +549,8 @@ The project covers **data preprocessing, exploratory analysis, clustering experi
 The final system uses **K-Means clustering with three customer segments** and an **XGBoost-based classification pipeline** to predict the segment of new customers through an interactive web application.
 
 The application has been successfully containerized using **Docker** and deployed publicly on **Render**, demonstrating the complete transition from Machine Learning experimentation to a deployable application.
+
+
+
+# Copyright © 2026 Pranav Patel. All Rights Reserved.
+This repository is publicly available for portfolio, educational, and evaluation purposes. Unauthorized copying, redistribution, modification, or presentation of this project or its source code as one's own work is prohibited.
